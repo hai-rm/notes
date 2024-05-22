@@ -4,6 +4,14 @@
 ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
 ```
 
+# git
+
+```
+# Squashing commits
+git reset --soft HEAD~1
+git push --force-with-lease origin <branch-name>
+```
+
 # Kubernetes
 
 ```
