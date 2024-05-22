@@ -1,7 +1,7 @@
 # Ansible
 
 ```
-ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire_fix1"
+ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
 ```
 
 # Kubernetes
