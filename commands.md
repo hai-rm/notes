@@ -28,3 +28,11 @@ kubectl scale --namespace uat statefulset/lpfixgw-scb --replicas=1
 kubectl logs --namespace uat statefulsets/lpfixgw-scb --tail=2000 | fix2pipe > short.txt
 kubectl logs --namespace uat statefulsets/lpfixgw-scb --since=5m | ~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name > view.txt
 ```
+
+# SBE
+
+```
+cd schema/sbe
+~/go/bin/re-sbe-tool -go schema.xml | gofmt -s > ~/codebase/reactive-go/pkg/encoding/sbe/schema.go
+~/go/bin/re-sbe-tool -cpp schema.xml | clang-format > ~/codebase/reactive-cpp/reactive/sbe/Schema.hpp
+```
