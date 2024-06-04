@@ -32,7 +32,6 @@ kubectl logs --namespace uat statefulsets/lpfixgw-scb --since=5m | ~/codebase/fi
 # SBE
 
 ```
-cd schema/sbe
-~/go/bin/re-sbe-tool -go schema.xml | gofmt -s > ~/codebase/reactive-go/pkg/encoding/sbe/schema.go
-~/go/bin/re-sbe-tool -cpp schema.xml | clang-format > ~/codebase/reactive-cpp/reactive/sbe/Schema.hpp
+~/go/bin/re-sbe-tool -go ~/codebase/schema/sbe/schema.xml | gofmt -s > ~/codebase/reactive-go/pkg/encoding/sbe/schema.go
+~/go/bin/re-sbe-tool -cpp ~/codebase/schema/sbe/schema.xml | clang-format --style=file:/home/twono/codebase/reactive-cpp/.clang-format > ~/codebase/reactive-cpp/reactive/sbe/Schema.hpp
 ```
