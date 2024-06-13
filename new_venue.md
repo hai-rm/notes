@@ -5,5 +5,5 @@
 5. Run `make` in `schema`
 6. Run `docker-compose build` in `schema` (That tries to build sqlite database)
 7. `docker-compose down -v`
-8. `docker-compose up mariadb`
+8. `docker-compose up mariadb` - this creates a local MariaDB database which can be viewed by SQL clients like DBeaver
 9. (Optionally) change `prod` to `uat` in `schema/docker-compose.yml` and re-run the last 2 steps. Do not commit this.
