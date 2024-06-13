@@ -10,7 +10,9 @@ ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-u
 [twono@Endeavour ~]$ docker run -it --rm 120885552157.dkr.ecr.eu-west-2.amazonaws.com/reactive-cpp:hchu lpfixgw
 
 # if not specifying lpfixgw then run inside the container (useful if we want to modify the config files)
-root@13e840b7f355:/# /cpp/bin/re-lpfixgw -f /cpp/etc/lpfixgw.conf 
+root@13e840b7f355:/# /cpp/bin/re-lpfixgw -f /cpp/etc/lpfixgw.conf
+
+docker system prune
 ```
 
 # Kubernetes
