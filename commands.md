@@ -11,7 +11,9 @@ ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-u
 
 # if not specifying lpfixgw then run inside the container (useful if we want to modify the config files)
 root@13e840b7f355:/# /cpp/bin/re-lpfixgw -f /cpp/etc/lpfixgw.conf
-
+```
+Once in a while:
+```
 docker system prune
 ```
 
