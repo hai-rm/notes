@@ -29,6 +29,10 @@ kubectl scale --namespace uat statefulset/lpfixgw-scb --replicas=0
 kubectl scale --namespace uat statefulset/lpfixgw-scb --replicas=1
 # Or just Ctrl+K in k9s to bounce the pod
 
+kubectl --namespace uat port-forward deploy/socat-hchu-marketdata 9021 &
+kubectl --namespace uat port-forward deploy/socat-hchu-order 9022 &
+kubectl --namespace uat port-forward service/crossfire-internal 8290 &
+
 kubectl logs --namespace uat statefulsets/lpfixgw-scb --tail=2000 | fix2pipe > short.txt
 kubectl logs --namespace uat statefulsets/lpfixgw-scb --since=5m | ~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name > view.txt
 ```
