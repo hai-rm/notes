@@ -1,10 +1,15 @@
 ```
 alias clangformat='clang-format --style=file -i '
 alias clion='~/clion-2024.1.1/bin/clion.sh &'
+alias pycharm='~/pycharm-2024.1.1/bin/pycharm.sh &'
+alias goland='~/GoLand-2024.1.1/bin/goland.sh &' 
 alias fix2pipe='sed '\''s/\x01/|/g'\'''
+alias fixcolor='~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name'
+alias fixnocolor='~/codebase/fix2pipexx/fix2pipe++_nocolor.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name'
 alias grep='grep -n --color'
 alias lls='ls -lh'
 alias lpt='ls -lpth'
+alias loguat='kubectl logs --namespace uat' 
 alias rebase='git fetch upstream && git branch -f master upstream/master && git rebase master'
 alias sync='git fetch upstream && git branch -f master upstream/master && git push origin master'
 ```
