@@ -1,5 +1,5 @@
 ```
-alias clangformat='clang-format --style=file -i '
+alias clangformat='clang-format -i '
 alias clion='~/clion-2024.1.1/bin/clion.sh &'
 alias pycharm='~/pycharm-2024.1.1/bin/pycharm.sh &'
 alias goland='~/GoLand-2024.1.1/bin/goland.sh &'
