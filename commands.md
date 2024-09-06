@@ -1,29 +1,3 @@
-# PCAP
-
-```
-# in switchup
-scripts/re-openpcap -n ny4 -s "2024/08/12 19:43:00" -e "2024/08/12 19:44:20" -a 10.130.221.52 -p 8909
-```
-
-# Ansible
-
-```
-ansible-playbook playbooks/aws_cluster.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
-```
-
-# Docker
-
-```
-[twono@Endeavour ~]$ docker run -it --rm 120885552157.dkr.ecr.eu-west-2.amazonaws.com/reactive-cpp:hchu lpfixgw
-
-# if not specifying lpfixgw then run inside the container (useful if we want to modify the config files)
-root@13e840b7f355:/# /cpp/bin/re-lpfixgw -f /cpp/etc/lpfixgw.conf
-```
-Once in a while:
-```
-docker system prune
-```
-
 # Kubernetes
 
 ```
@@ -45,6 +19,42 @@ kubectl logs --namespace uat statefulsets/lpfixgw-scb --since=5m | ~/codebase/fi
 
 helm uninstall --namespace uat lpfixgw-call-rfq
 kubectl delete --namespace uat pvc/data-lpfixgw-call-rfq-0
+```
+
+# Ansible
+
+```
+ansible-playbook playbooks/application.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
+```
+
+# Docker
+
+```
+[twono@Endeavour ~]$ docker run -it --rm 120885552157.dkr.ecr.eu-west-2.amazonaws.com/reactive-cpp:hchu lpfixgw
+
+# if not specifying lpfixgw then run inside the container (useful if we want to modify the config files)
+root@13e840b7f355:/# /cpp/bin/re-lpfixgw -f /cpp/etc/lpfixgw.conf
+```
+Once in a while:
+```
+docker system prune
+```
+
+# Redis
+
+```
+[twono@Endeavour ~]$ kubectl port-forward --namespace uat svc/lpfixgw-ctdl-internal 6379
+[twono@Endeavour ~]$ redis-cli
+127.0.0.1:6379> RE.SESS-LIST
+127.0.0.1:6379> RE.SESS-ENABLE 4.4:CLI_QUOTES->CIG_QUOTES no
+127.0.0.1:6379> RE.SESS-ENABLE 4.4:CLI_QUOTES->CIG_QUOTES yes
+```
+
+# PCAP
+
+```
+# in switchup
+scripts/re-openpcap -n ny4 -s "2024/08/12 19:43:00" -e "2024/08/12 19:44:20" -a 10.130.221.52 -p 8909
 ```
 
 # SBE
