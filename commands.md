@@ -1,7 +1,10 @@
 # Kubernetes
 
 ```
+kubectl config get-contexts
 kubectl config use-context default
+kubectl config use-context switchboard-nonprod
+kubectl get namespace
 
 kubectl edit --namespace uat statefulset/lpfixgw-scb
 kubectl edit --namespace uat configmap/lpfixgw-scb-config
