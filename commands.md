@@ -46,11 +46,17 @@ docker system prune
 # Redis
 
 ```
+# Logging out and relogging lpfixgw in UAT
 [twono@Endeavour ~]$ kubectl port-forward --namespace uat svc/lpfixgw-ctdl-internal 6379
 [twono@Endeavour ~]$ redis-cli
 127.0.0.1:6379> RE.SESS-LIST
 127.0.0.1:6379> RE.SESS-ENABLE 4.4:CLI_QUOTES->CIG_QUOTES no
 127.0.0.1:6379> RE.SESS-ENABLE 4.4:CLI_QUOTES->CIG_QUOTES yes
+
+# Checking sim data in INT
+$ kubectl port-forward svc/redis-analytics-slave 6379 -n int
+$ redis-cli
+> XREVRANGE data.ohlc.stream:EURSEK-REX:1s + - COUNT 1
 ```
 
 # PCAP
