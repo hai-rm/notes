@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Problem:
+#
+# crossfire-fix6-b30ecbc056b8 2024/10/09 12:01:44.802277 WARN market mappings for 2 unknown client markets - please schedule a restart
+#
+# This can be caused by dangling mappings on Redis.
+#
+# Start by checking-out the schema project at the version that was in use when the Crossfire instance was started.
+# Then extract into markets.txt as follows:
+#
+# > sqlite3 prod.db 'select symbol from market_t where pool != 0;' | sort | uniq >markets.txt
+#
+# Note that "uniq" should be redundant due to unique constraint in the database.
+#
+# Then port forward to the Redis slave and run this script, piping the output into mappings.csv:
+#
+# > kubectl port-forward svc/redis-static-slave 6379:6379 -n switchboard-prod
+# > re-mappings | tee mappings.csv
+#
+# This script will take many minutes to complete in production.
+# Once complete, run the following to identify diffs:
+#
+# > awk -F, 'NR==FNR { markets[$1]; next } !($3 in markets)' markets.txt mappings.csv
+# > BTIG_UK_FDSA,WTANl-TRSI,WTANl-TRSI50
+# > BTIG_UK_FDSA,VMUKl-TRSI,VMUKl-TRSI50
+#
+
+redis-cli --raw KEYS "accnts.markets:*" | while read key; do
+    redis-cli --raw HGETALL $key | paste -d " " - - | while read hkey hval; do
+        if [[ "$hkey" != *-AGG ]]; then
+            key=$(echo $key | cut -d':' -f2)
+            echo "$key,$hkey,$hval"
+        fi
+    done
+done
