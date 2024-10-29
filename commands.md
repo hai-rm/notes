@@ -63,7 +63,7 @@ $ redis-cli
 
 ```
 # in switchup
-scripts/re-openpcap -n ny4 -s "2024/08/12 19:43:00" -e "2024/08/12 19:44:20" -a 10.130.221.52 -p 8909
+script/re-openpcap -n ny4 -s "2024/08/12 19:43:00" -e "2024/08/12 19:44:20" -a 10.130.221.52 -p 8909
 ```
 
 # SBE
