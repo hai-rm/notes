@@ -6,22 +6,22 @@ kubectl config use-context default
 kubectl config use-context switchboard-nonprod
 kubectl get namespace
 
-kubectl edit --namespace uat statefulset/lpfixgw-scb
-kubectl edit --namespace uat configmap/lpfixgw-scb-config
+kubectl edit --namespace lp-int statefulset/lpfixgw-scb
+kubectl edit --namespace lp-int configmap/lpfixgw-scb-config
 
-kubectl scale --namespace uat statefulset/lpfixgw-scb --replicas=0
-kubectl scale --namespace uat statefulset/lpfixgw-scb --replicas=1
+kubectl scale --namespace lp-int statefulset/lpfixgw-scb --replicas=0
+kubectl scale --namespace lp-int statefulset/lpfixgw-scb --replicas=1
 # Or just Ctrl+K in k9s to bounce the pod
 
-kubectl --namespace uat port-forward deploy/socat-hchu-marketdata 9021 &
-kubectl --namespace uat port-forward deploy/socat-hchu-order 9022 &
-kubectl --namespace uat port-forward service/crossfire-internal 8290 &
+kubectl --namespace lp-int port-forward deploy/socat-hchu-marketdata 9021 &
+kubectl --namespace lp-int port-forward deploy/socat-hchu-order 9022 &
+kubectl --namespace lp-int port-forward service/crossfire-internal 8290 &
 
-kubectl logs --namespace uat statefulsets/lpfixgw-scb --tail=2000 | fix2pipe > short.txt
-kubectl logs --namespace uat statefulsets/lpfixgw-scb --since=5m | ~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name > view.txt
+kubectl logs --namespace lp-int statefulsets/lpfixgw-scb --tail=2000 | fix2pipe > short.txt
+kubectl logs --namespace lp-int statefulsets/lpfixgw-scb --since=5m | ~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name > view.txt
 
-helm uninstall --namespace uat lpfixgw-call-rfq
-kubectl delete --namespace uat pvc/data-lpfixgw-call-rfq-0
+helm uninstall --namespace lp-int lpfixgw-call-rfq
+kubectl delete --namespace lp-int pvc/data-lpfixgw-call-rfq-0
 ```
 
 # Ansible
@@ -47,7 +47,7 @@ docker system prune
 
 ```
 # Logging out and relogging lpfixgw in UAT
-[twono@Endeavour ~]$ kubectl port-forward --namespace uat svc/lpfixgw-ctdl-internal 6379
+[twono@Endeavour ~]$ kubectl port-forward --namespace lp-int svc/lpfixgw-ctdl-internal 6379
 [twono@Endeavour ~]$ redis-cli
 127.0.0.1:6379> RE.SESS-LIST
 127.0.0.1:6379> RE.SESS-ENABLE 4.4:CLI_QUOTES->CIG_QUOTES no
