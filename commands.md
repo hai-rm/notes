@@ -43,6 +43,17 @@ Once in a while:
 docker system prune
 ```
 
+# Regression tests
+
+```
+codebase/reactive-py/
+venv/bin/activate
+qa/regression/
+make up
+export LOCAL_REGRESSION_TEST=ANY_VALUE
+pytest -sv client_api/test_agg_md.py::test_non_agg_sub_market_mapping_update_basic
+```
+
 # Redis
 
 ```
