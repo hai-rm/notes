@@ -1,7 +1,7 @@
 ```
 alias clangformat='clang-format -i '
 alias clion='~/clion-2025.1.1/bin/clion &'
-alias pycharm='~/pycharm-2024.1.1/bin/pycharm.sh &'
+alias pycharm='~/pycharm-2025.1.1.1/bin/pycharm &'
 alias goland='~/GoLand-2025.1.1/bin/goland &'
 alias grep='grep -n --color'
 alias lls='ls -lh'
