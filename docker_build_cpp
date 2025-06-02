@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-# tag=120885552157.dkr.ecr.eu-west-2.amazonaws.com/reactive-cpp:hchu
 tag=772942840514.dkr.ecr.eu-west-2.amazonaws.com/reactive-cpp:hchu
-docker build --build-arg make_args="-j11" -t $tag .
+docker build --build-arg make_args="-j8" -t $tag .
 docker push $tag
