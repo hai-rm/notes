@@ -1,5 +1,6 @@
 ```
 alias clangformat='clang-format -i '
+alias formatmodified='git diff --name-only | xargs clang-format -i'
 alias clion='~/clion-2025.1.1/bin/clion &'
 alias pycharm='~/pycharm-2025.1.1.1/bin/pycharm &'
 alias goland='~/GoLand-2025.1.1/bin/goland &'
