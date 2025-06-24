@@ -14,5 +14,5 @@ alias fixcolor='~/codebase/fix2pipexx/fix2pipe++.py -t ~/codebase/reactive-cpp/r
 alias fixnocolor='~/codebase/fix2pipexx/fix2pipe++_nocolor.py -t ~/codebase/reactive-cpp/reactive/fix/Tag.hpp -s name'
 alias rebase='git fetch upstream && git branch -f master upstream/master && git push origin master && git rebase master'
 alias cdhelm='cd ~/codebase/deployment/ansible/inventories/switchboard-uat/group_vars/all/helm/'
-alias opslogs='/app/go/bin/re-ops-tool logs --color'
+alias re-logs='/app/go/bin/re-ops-tool logs'
 ```
