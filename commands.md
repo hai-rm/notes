@@ -1,3 +1,11 @@
+# Getting logs
+
+```
+loguat statefulset/lpalgogw-bnp --tail=20 | fixcolor
+re-logs -n lp-int -s "1m ago" -p "crossfire-68*"
+re-logs -n lp-int -s "2025/06/24 17:12:24" -p "lpalgogw-bnp*" 
+```
+
 # Kubernetes
 
 ```
