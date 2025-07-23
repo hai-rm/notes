@@ -35,7 +35,17 @@ kubectl delete --namespace lp-int pvc/data-lpfixgw-call-rfq-0
 # Ansible
 
 ```
-ansible-playbook playbooks/application.yml --inventory inventories/switchboard-uat --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
+# For non-prod vault pass is reactive
+cd ~/codebase/deployment/ansible
+source venv/bin/active
+
+ansible-playbook playbooks/application.yml --inventory inventories/switchboard-lp-int --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
+
+# Deploy one and stop it
+ansible-playbook app-playbooks/remote_cluster.yml -i inventories/infra-perf-london --tags="makersim2,makersim2-stop" --ask-vault-pass
+
+# Deploy all, use "--tags=config,update,cron,stop" if we want to deploy and stop
+ansible-playbook app-playbooks/remote_cluster.yml -i inventories/infra-perf-london --tags=config,update,cron --ask-vault-pass
 ```
 
 # Docker
