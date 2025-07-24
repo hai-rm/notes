@@ -1,3 +1,8 @@
+# Useful bash commands
+```
+find . -name "crossfire*" -exec ag "shard:" {} +
+```
+
 # Getting logs
 
 ```
