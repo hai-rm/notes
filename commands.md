@@ -93,6 +93,14 @@ $ redis-cli
 > XREVRANGE data.ohlc.stream:EURSEK-REX:1s + - COUNT 1
 ```
 
+# Corvil
+
+```
+# STEP1: SSH for SOCKS5 proxy
+ssh -D 1080 -Nf uk-lon-jump-2
+# STEP2: Set firefox proxy to 127.0.0.1 1080
+```
+
 # PCAP
 
 ```
