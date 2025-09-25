@@ -8,7 +8,7 @@ find . -name "crossfire*" -exec ag "shard:" {} +
 ```
 loguat statefulset/lpalgogw-bnp --tail=20 | fixcolor
 re-logs -n lp-int -s "1m ago" -p "crossfire-68*"
-re-logs -n lp-int -s "2025/06/24 17:12:24" -p "lpalgogw-bnp*" 
+re-logs -n prod-ld4 -s "2025/09/20 02:10:10" -e "2025/09/21 20:02:00" -p "lpfixgw-db*" "BREVAN_RM_MD.FIX"
 ```
 
 # Kubernetes
