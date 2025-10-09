@@ -44,6 +44,9 @@ kubectl delete --namespace lp-int pvc/data-lpfixgw-call-rfq-0
 cd ~/codebase/deployment/ansible
 source venv/bin/active
 
+# Check for core/port conflicts
+(venv)$ script/check-infra-config.py < inventories/infra-perf-london/group_vars/all/vars.yml
+
 ansible-playbook playbooks/application.yml --inventory inventories/switchboard-lp-int --ask-vault-pass --extra-vars "helm_chart_filter=crossfire-fix1"
 
 # Deploy one and stop it
